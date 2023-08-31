@@ -287,7 +287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   achievementsList:
-  - achievementGoal: Jump 10 TIme
+  - achievementGoal: Jump 10 Time
     numberOfCondition: 10
     currentNumberCondition: 0
     isComplete: 0
@@ -312,15 +312,15 @@ MonoBehaviour:
     currentNumberCondition: 0
     isComplete: 0
   - achievementGoal: Play more 20 sec
-    numberOfCondition: 10
+    numberOfCondition: 20
     currentNumberCondition: 0
     isComplete: 0
   - achievementGoal: Play more 30 sec
-    numberOfCondition: 10
+    numberOfCondition: 30
     currentNumberCondition: 0
     isComplete: 0
   - achievementGoal: Play more 40 sec
-    numberOfCondition: 10
+    numberOfCondition: 40
     currentNumberCondition: 0
     isComplete: 0
 --- !u!4 &74015898
