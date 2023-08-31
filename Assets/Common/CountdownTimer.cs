@@ -9,7 +9,7 @@ namespace SuperGame
         public float duration;
         float currentTime;
         bool isStarted;
-        
+
         public event Action OnDone;
         public event Action<float> OnTimeChange;
 
@@ -20,9 +20,10 @@ namespace SuperGame
         }
 
         public void PassTime()
-        {
+        { 
             if (!isStarted)
                 return;
+
             
             currentTime -= Time.deltaTime;
             OnTimeChange?.Invoke(currentTime);

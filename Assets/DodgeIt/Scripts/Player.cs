@@ -38,7 +38,7 @@ namespace SuperGame.DodgeIt
                 return;
 
             currentHealth--;
-            AchievementManager.Instance.AchievementComplete("Take damage 10 time");
+            AchievementManager.Instance.AchievementComplete("Take damage 10 time"); //AchievementCheckWhenTakeDamage
             DamageEffectPlayer.Instance.PlayOn(renderer);
             if (currentHealth == 0)
             {

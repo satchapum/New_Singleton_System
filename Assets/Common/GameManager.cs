@@ -22,15 +22,17 @@ namespace SuperGame
         bool isPaused;
         bool isGameOver;
 
+        public float currentTime = 0f;
+
         protected override void InitAfterAwake()
         {
             Pause();
             Reset();
             SetupHUD();
+
             
             //StartLevel();
         }
-        
         void Reset()
         {
             lifeCount = maxLifeCount;
@@ -49,8 +51,23 @@ namespace SuperGame
 
         void Update()
         {
+            //AchievementAboutTime
+            AchievementTimePlus(AchievementTimeNumber(10));
+            AchievementTimePlus(AchievementTimeNumber(20));
+            AchievementTimePlus(AchievementTimeNumber(30));
+            AchievementTimePlus(AchievementTimeNumber(40));
+
             if (!isPaused)
                 levelEndTimer.PassTime();
+        }
+        string AchievementTimeNumber(int timeNumber)
+        {
+            string AchievementTextTimeNumber = string.Format("Play more {0} sec", timeNumber);
+            return AchievementTextTimeNumber;
+        }
+        void AchievementTimePlus(string AchievementTimeName )
+        {
+            AchievementManager.Instance.AchievementCompleteAboutTime(AchievementTimeName, (int)TimeManager.Instance.CurrentTime);
         }
 
         public void StartLevel()

@@ -11,6 +11,7 @@ namespace SuperGame
 
         [SerializeField] List<Achievement> achievementsList = new List<Achievement>();
         public List<Achievement> AchievementsList => achievementsList;
+
         
         protected override void InitAfterAwake()
         {
@@ -19,14 +20,31 @@ namespace SuperGame
 
         public void AchievementComplete(string achievementGoal)
         {
+            bool isItTime = false;
+            CheckAchievementComplete(achievementGoal, 0, isItTime);
 
-            foreach(Achievement achievement in AchievementsList)
+        }
+
+        public void AchievementCompleteAboutTime(string achievementGoal, int time)
+        {
+            bool isItTime = true;
+            CheckAchievementComplete(achievementGoal, time, isItTime);
+        }
+
+        void CheckAchievementComplete(string achievementGoal, int time, bool isItTime)
+        {
+            foreach (Achievement achievement in AchievementsList)
             {
-                if (achievement.achievementGoal == achievementGoal)
+                if (achievement.achievementGoal == achievementGoal && achievement.isComplete == false)
                 {
-                    achievement.currentNumberCondition++;
+                    if(isItTime == false)
+                        achievement.currentNumberCondition++;
+                    else
+                        achievement.currentNumberCondition = time;
+
                     if (achievement.currentNumberCondition == achievement.numberOfCondition)
                     {
+                        achievement.isComplete = true;
                         Debug.Log("Pop-up achievement");
                         //pop-up_achievement_here
                     }
@@ -34,12 +52,14 @@ namespace SuperGame
             }
         }
     }
+
     [Serializable]
     public class Achievement
     {
         public string achievementGoal;
         public int numberOfCondition;
         public int currentNumberCondition;
+        public bool isComplete;
     }
 }
 
