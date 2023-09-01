@@ -17,7 +17,7 @@ namespace SuperGame
 
         [SerializeField] HUD hud;
         [SerializeField] string lastPlayedScene;
-        
+
         protected override void InitAfterAwake()
         {
             Reset();

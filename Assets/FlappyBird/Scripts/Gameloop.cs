@@ -7,14 +7,13 @@ namespace SuperGame.FlappyBird
     {
         public GameObject Player;
         public bool GameIsRunning = false;
-
         Rigidbody2D rigidbody2D;
-        
+
         void Start()
         {
+            rigidbody2D = Player.GetComponent<Rigidbody2D>();
             PauseGame();
             endMenu.SetActive(false);
-            rigidbody2D = Player.GetComponent<Rigidbody2D>();
         }
         
         void PauseGame()
@@ -31,7 +30,7 @@ namespace SuperGame.FlappyBird
 
         void SetIsUseGravity(bool isUse)
         {
-            rigidbody2D.gravityScale = isUse ? 1 : 0;
+            rigidbody2D.gravityScale = isUse? 1 : 0;
             GameIsRunning = isUse;
         }
 
