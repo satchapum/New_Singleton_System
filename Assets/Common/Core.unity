@@ -340,6 +340,11 @@ MonoBehaviour:
     numberOfCondition: 1
     currentNumberCondition: 0
     isComplete: 0
+  - achievementName: The traveller
+    achievementGoal: Play 4 games
+    numberOfCondition: 4
+    currentNumberCondition: 0
+    isComplete: 0
 --- !u!4 &74015898
 Transform:
   m_ObjectHideFlags: 0
