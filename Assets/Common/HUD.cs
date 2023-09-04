@@ -75,5 +75,9 @@ namespace SuperGame
         {
             levelText.text = "Level : " + level;
         }
+        public void OnButtonClick()
+        {
+
+        }
     }
 }

@@ -15,6 +15,7 @@ namespace SuperGame
         [SerializeField] TMP_Text achievementDescriptionTextUI;
         [SerializeField] GameObject achievementUI;
         [SerializeField] List<Achievement> achievementsList = new List<Achievement>();
+
         public List<Achievement> AchievementsList => achievementsList;
         
 
@@ -76,6 +77,17 @@ namespace SuperGame
             achievementDescriptionTextUI.text = achievementGoal;
             yield return new WaitForSeconds(2);
             achievementUI.SetActive(false);
+        }
+
+        public void AchievementUI(GameObject achievementUIPrefab)
+        {
+            foreach (var achievementData in AchievementsList)
+            {
+                var newAchievementUI = Instantiate(achievementUIPrefab, achievementUIPrefab.transform.parent, false);
+
+                newAchievementUI.gameObject.SetActive(true);
+                newAchievementUI.GetComponentInChildren<Text>() = achievementData.achievementName;
+            }
         }
     }
 
