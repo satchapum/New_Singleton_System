@@ -99,6 +99,7 @@ namespace SuperGame
         {
             isPaused = true;
             Time.timeScale = 0f;
+            AchievementManager.Instance.AchievementComplete("Pause for notting ?");
         }
 
         public void Lose()

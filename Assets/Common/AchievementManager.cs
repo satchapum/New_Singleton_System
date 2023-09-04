@@ -14,7 +14,6 @@ namespace SuperGame
         [SerializeField] TMP_Text achievementNameTextUI;
         [SerializeField] TMP_Text achievementDescriptionTextUI;
         [SerializeField] GameObject achievementUI;
-
         [SerializeField] List<Achievement> achievementsList = new List<Achievement>();
         public List<Achievement> AchievementsList => achievementsList;
         
@@ -52,16 +51,26 @@ namespace SuperGame
                     if (achievement.currentNumberCondition == achievement.numberOfCondition)
                     {
                         achievement.isComplete = true;
-                        StartCoroutine(AchievementPopupShowtime(achievement.achievementName , achievement.achievementGoal));
-                        Debug.Log("Pop-up achievement");
-                        //pop-up_achievement_here
+
+                        if (achievementUI.active == false)
+                        {
+                            StartCoroutine(AchievementPopupShowtime(achievement.achievementName, achievement.achievementGoal, true));
+                            Debug.Log("Pop-up achievement");
+                        }
+                        else if (achievementUI.active == true)
+                        {
+                            StartCoroutine(AchievementPopupShowtime(achievement.achievementName, achievement.achievementGoal, false));
+                        }
                     }
                 }
             }
         }
        
-        IEnumerator AchievementPopupShowtime(string achievementName, string achievementGoal)
+        IEnumerator AchievementPopupShowtime(string achievementName, string achievementGoal, bool achievementUIActive)
         {
+            if(achievementUIActive == false) //do when 2 popup show in same time
+                yield return new WaitForSeconds(2.5f);
+
             achievementUI.SetActive(true);
             achievementNameTextUI.text = achievementName;
             achievementDescriptionTextUI.text = achievementGoal;
