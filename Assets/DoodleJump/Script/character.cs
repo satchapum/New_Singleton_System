@@ -31,6 +31,7 @@ namespace SuperGame.DoodleJump
         void PlayJumpSound()
         {
             AudioManager.Instance.Play("jump");
+            AchievementManager.Instance.AchievementComplete("Jump 10 Time");
         }
     }
 }
