@@ -3,25 +3,31 @@ using System.Collections.Generic;
 using PhEngine.Core;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 namespace SuperGame
 {
     public class HUD : Singleton<HUD>
     {
-        [Header("Status")] [SerializeField] Image lifePointPrefab;
+        [Header("Status")][SerializeField] Image lifePointPrefab;
         [SerializeField] List<Image> lifePointList = new List<Image>();
         [SerializeField] TMP_Text levelText;
 
-        [Header("Time")] [SerializeField] TMP_Text gameStartCountdownText;
+        [Header("Time")][SerializeField] TMP_Text gameStartCountdownText;
         [SerializeField] Image countdownGaugeImage;
         [SerializeField] TMP_Text gameEndCountdownTimeText;
 
-        [Header("End Game")] 
+        [Header("End Game")]
         [SerializeField] CanvasGroup endGameMenuCanvasGroup;
         [SerializeField] TMP_Text resultText;
         [SerializeField] Button restartButton;
         [SerializeField] Button nextLevel;
+
+        [Header("Archievement Prefab And Scroll Archievement")]
+        [SerializeField] GameObject scrollArchievement;
+        [SerializeField] AchievementDescription achievementUI;
+        public bool isStopArchievementUIOn = false;
 
         public event Action OnRestart;
         public event Action OnNext;
@@ -34,13 +40,13 @@ namespace SuperGame
 
         public void NotifyOnNext()
         {
-            SetEndGameUIVisible(false,false);
+            SetEndGameUIVisible(false, false);
             OnNext?.Invoke();
         }
-        
+
         public void NotifyOnRestart()
         {
-            SetEndGameUIVisible(false,false);
+            SetEndGameUIVisible(false, false);
             OnRestart?.Invoke();
         }
 
@@ -70,14 +76,27 @@ namespace SuperGame
             endGameMenuCanvasGroup.gameObject.SetActive(isVisible);
             nextLevel.interactable = !isLose;
         }
-        
+
         public void SetLevel(int level)
         {
             levelText.text = "Level : " + level;
         }
+        
         public void OnButtonClick()
         {
-
+            if (isStopArchievementUIOn == false)
+            {
+                GameManager.Instance.Pause();
+                scrollArchievement.SetActive(true);
+                AchievementManager.Instance.AchievementUIPause(achievementUI);
+                isStopArchievementUIOn = true;
+            }
+            else
+            {
+                scrollArchievement.SetActive(false);
+                GameManager.Instance.Resume();
+                isStopArchievementUIOn = false;
+            }
         }
     }
 }
