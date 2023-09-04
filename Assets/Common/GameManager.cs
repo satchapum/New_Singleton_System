@@ -52,6 +52,17 @@ namespace SuperGame
 
         void Update()
         {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                if (isPaused == false)
+                {
+                    Pause();
+                    AchievementManager.Instance.AchievementComplete("Pause game 1 time");
+                }
+                else
+                    Resume();
+                
+            }
             //AchievementAboutTime
             AchievementTimePlus(AchievementTimeNumber(10));
             AchievementTimePlus(AchievementTimeNumber(20));
@@ -61,6 +72,7 @@ namespace SuperGame
             if (!isPaused)
                 levelEndTimer.PassTime();
         }
+
         string AchievementTimeNumber(int timeNumber)
         {
             string AchievementTextTimeNumber = string.Format("Play more {0} sec", timeNumber);
