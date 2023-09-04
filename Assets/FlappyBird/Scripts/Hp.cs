@@ -42,6 +42,7 @@ namespace SuperGame.FlappyBird
             Debug.Log("Take Damege");
             StartCoroutine(ApplyImmunity()); // เริ่มการนับเวลาอมตะ
             StartCoroutine(ChangeColorTemporarily());
+            AchievementManager.Instance.AchievementComplete("Take damage 10 time");
             if (currenthp <= 0)
             {
                 this.moveMent.isDead = true;

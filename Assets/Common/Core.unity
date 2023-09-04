@@ -430,24 +430,24 @@ MonoBehaviour:
     numberOfCondition: 10
     currentNumberCondition: 0
     isComplete: 0
-  - achievementName: 
+  - achievementName: Faster Faster Faster !!!
     achievementGoal: Change Level 5 Time
     numberOfCondition: 5
     currentNumberCondition: 0
     isComplete: 0
-  - achievementName: 
+  - achievementName: Are you bunny ?
     achievementGoal: Click Jump 10 Time
     numberOfCondition: 0
     currentNumberCondition: 0
     isComplete: 0
-  - achievementName: 
+  - achievementName: I'm richhhhhhhh
     achievementGoal: Collect 10 Coin
     numberOfCondition: 10
     currentNumberCondition: 0
     isComplete: 0
   - achievementName: It doesn't hurt that much.
     achievementGoal: Take damage 10 time
-    numberOfCondition: 3
+    numberOfCondition: 10
     currentNumberCondition: 0
     isComplete: 0
   - achievementName: It's EZ. Right ?
@@ -460,7 +460,7 @@ MonoBehaviour:
     numberOfCondition: 20
     currentNumberCondition: 0
     isComplete: 0
-  - achievementName: 
+  - achievementName: ' Very boring.'
     achievementGoal: Play more 30 sec
     numberOfCondition: 30
     currentNumberCondition: 0
@@ -2766,7 +2766,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1489186309
 MonoBehaviour:
   m_ObjectHideFlags: 0

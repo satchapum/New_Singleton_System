@@ -67,6 +67,7 @@ namespace SuperGame.SubwaySurfer2D
         {
             playerHealth--;
             DamageEffectPlayer.Instance.PlayOn(renderer);
+            AchievementManager.Instance.AchievementComplete("Take damage 10 time");
             if (playerHealth == 0)
             {
                 GameManager.Instance.Lose();
@@ -79,6 +80,7 @@ namespace SuperGame.SubwaySurfer2D
         {
             coinScore = coinScore + 5;
             AudioManager.Instance.Play("coin");
+            AchievementManager.Instance.AchievementComplete("Collect 10 Coin");
             CoinScoreUI();
         }
 

@@ -43,6 +43,7 @@ namespace SuperGame
             
             hud.SetLevel(currentLevel);
             LoadScene(levelList[currentScene]);
+            AchievementManager.Instance.AchievementComplete("Change Level 5 Time");
         }
         
         public void LoadScene(string sceneName)
