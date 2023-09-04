@@ -15,11 +15,10 @@ namespace SuperGame
         [SerializeField] TMP_Text achievementDescriptionTextUI;
         [SerializeField] GameObject achievementUI;
         [SerializeField] List<Achievement> achievementsList = new List<Achievement>();
+        [SerializeField] List<AchievementDescription> achievementsUIList = new List<AchievementDescription>();
 
         public List<Achievement> AchievementsList => achievementsList;
-        
-
-        
+                       
         protected override void InitAfterAwake()
         {
             
@@ -79,16 +78,26 @@ namespace SuperGame
             achievementUI.SetActive(false);
         }
 
-        public void AchievementUI(GameObject achievementUIPrefab)
+        public void AchievementUIPause(AchievementDescription achievementUIPrefab)
         {
+            ClearAllAchievementUI();
             foreach (var achievementData in AchievementsList)
             {
-                var newAchievementUI = Instantiate(achievementUIPrefab, achievementUIPrefab.transform.parent, false);
-
+                AchievementDescription newAchievementUI = Instantiate(achievementUIPrefab, achievementUIPrefab.transform.parent, false);
                 newAchievementUI.gameObject.SetActive(true);
-                newAchievementUI.GetComponentInChildren<Text>() = achievementData.achievementName;
+                achievementsUIList.Add(newAchievementUI);
+                newAchievementUI.SetData(achievementData.achievementName, achievementData.achievementGoal, achievementData.isComplete, achievementData.currentNumberCondition.ToString());
             }
         }
+        
+        public void ClearAllAchievementUI()
+        {
+            foreach (AchievementDescription achievementUI in achievementsUIList)
+                Destroy(achievementUI.gameObject);
+
+            achievementsUIList.Clear();
+        }
+        
     }
 
     [Serializable]
@@ -100,7 +109,5 @@ namespace SuperGame
         public int currentNumberCondition;
         public bool isComplete;
     }
-
-
 }
 

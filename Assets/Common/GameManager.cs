@@ -49,7 +49,6 @@ namespace SuperGame
             hud.OnRestart += Restart;
         }
 
-
         void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape))
@@ -139,7 +138,5 @@ namespace SuperGame
                 LevelManager.Instance.RestartCurrentLevel();
             }
         }
-
-        
     }
 }
