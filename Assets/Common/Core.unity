@@ -437,7 +437,7 @@ MonoBehaviour:
     isComplete: 0
   - achievementName: Are you bunny ?
     achievementGoal: Click Jump 10 Time
-    numberOfCondition: 0
+    numberOfCondition: 10
     currentNumberCondition: 0
     isComplete: 0
   - achievementName: I'm richhhhhhhh

@@ -26,6 +26,7 @@ namespace SuperGame.FlappyBird
                     myRigidbody2D.AddForce(jumpForce * Vector2.up);
                     AudioManager.Instance.Play("jump");
                     animator.SetTrigger("Jump");
+                    AchievementManager.Instance.AchievementComplete("Click Jump 10 Time");
                 }
             }
             else

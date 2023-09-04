@@ -66,6 +66,7 @@ namespace SuperGame.SubwaySurfer2D
             {
                 AudioManager.Instance.Play("jump");
                 StartCoroutine("Jump");
+                AchievementManager.Instance.AchievementComplete("Click Jump 10 Time");
             }
             
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
